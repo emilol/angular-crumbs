@@ -2,8 +2,6 @@ import {NgModule} from '@angular/core'
 import {RouterModule} from "@angular/router";
 import {rootRouterConfig} from "./app.routes";
 import {AppComponent} from "./app.component";
-import {GithubService} from "./github/shared/github.service";
-import {BreadcrumbService} from './breadcrumb/breadcrumb.service';
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
@@ -15,12 +13,19 @@ import {RepoListComponent} from './github/repo-list/repo-list.component';
 import {RepoDetailComponent} from './github/repo-detail/repo-detail.component';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
+import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+
+const APP_PROVIDERS = [
+    ...APP_RESOLVER_PROVIDERS,
+];
+
 @NgModule({
   declarations: [AppComponent, AboutComponent, RepoBrowserComponent, RepoListComponent, RepoDetailComponent, HomeComponent, BreadcrumbComponent],
   imports     : [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(rootRouterConfig)],
-  providers   : [GithubService, {provide: LocationStrategy, useClass: HashLocationStrategy}, BreadcrumbService],
+  providers   : [APP_PROVIDERS, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap   : [AppComponent]
 })
+
 export class AppModule {
 
 }

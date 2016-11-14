@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {GithubService} from '../shared/github.service';
+import {BreadcrumbService} from '../../breadcrumb';
 
 @Component({
   selector: 'repo-detail',
@@ -12,7 +13,7 @@ export class RepoDetailComponent implements OnInit {
   private repo:string;
   public repoDetails:any = {};
 
-  constructor(public github:GithubService, private route:ActivatedRoute) {
+  constructor(public github:GithubService, private breadcrumbService: BreadcrumbService, private route:ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -24,6 +25,7 @@ export class RepoDetailComponent implements OnInit {
         this.github.getRepoForOrg(this.org, this.repo)
           .subscribe(repoDetails => {
             this.repoDetails = repoDetails;
+            this.breadcrumbService.changeBreadcrumb(this.route.snapshot, repoDetails.name);
           });
       }
     });
