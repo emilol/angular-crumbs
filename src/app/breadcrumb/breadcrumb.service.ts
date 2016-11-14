@@ -26,9 +26,10 @@ export class BreadcrumbService {
             while (route.children.length) {
                 route = route.firstChild;
                 if (!route.routeConfig.path) continue;
-                if (!route.data["breadcrumb"]) continue;
 
-                url += `/${route.url.map(s => s.toString()).join('/')}`;
+                url += `/${this.createUrl(route)}`;
+
+                if (!route.data["breadcrumb"]) continue;
 
                 this.breadcrumbsCollection.push(this.createBreadcrumb(route, url));
             }
@@ -43,5 +44,24 @@ export class BreadcrumbService {
             terminal: route.children.length === 0 || !route.firstChild.routeConfig.path,
             url: url
         }
+    }
+
+    private createUrl(route: ActivatedRouteSnapshot) {
+        return route.url.map(s => s.toString()).join('/');
+    }
+
+    private createRootUrl(route: ActivatedRouteSnapshot) {
+        let url = "";
+
+        route = route.root;
+
+        while (route.children.length) {
+            route = route.firstChild;
+            if (!route.routeConfig.path) continue;
+
+            url += `/${this.createUrl(route)}`;
+        }
+
+        return url;
     }
 }
