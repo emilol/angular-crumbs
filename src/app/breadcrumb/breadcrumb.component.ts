@@ -7,11 +7,11 @@ import { Breadcrumb, BreadcrumbService } from "./breadcrumb.service"
     styleUrls: ["./breadcrumb.component.css"]
 })
 export class BreadcrumbComponent {
-    breadcrumbsCollection: Breadcrumb[];
+    breadcrumbs: Breadcrumb[];
 
     constructor(private breadcrumbService: BreadcrumbService) {
         breadcrumbService.onBreadcrumbChange.subscribe((crumbs) => {
-            this.breadcrumbsCollection = crumbs;
+            this.breadcrumbs = crumbs;
         });
     }
 }

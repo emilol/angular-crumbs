@@ -13,16 +13,16 @@ export class Breadcrumb {
 export class BreadcrumbService {
     onBreadcrumbChange: EventEmitter<any> = new EventEmitter<Breadcrumb[]>(false);
 
-    private breadcrumbsCollection: Breadcrumb[];
+    private breadcrumbs: Breadcrumb[];
 
     constructor(private router: Router) {
         this.router.events.subscribe((routeEvent: RoutesRecognized) => {
             if (!(routeEvent instanceof RoutesRecognized)) return;
-            
+
             let route = routeEvent.state.root;
             let url = "";
 
-            this.breadcrumbsCollection = [];
+            this.breadcrumbs = [];
 
             while (route.children.length) {
                 route = route.firstChild;
@@ -32,20 +32,20 @@ export class BreadcrumbService {
 
                 if (!route.data["breadcrumb"]) continue;
 
-                this.breadcrumbsCollection.push(this.createBreadcrumb(route, url));
+                this.breadcrumbs.push(this.createBreadcrumb(route, url));
             }
 
-            this.onBreadcrumbChange.emit(this.breadcrumbsCollection);
+            this.onBreadcrumbChange.emit(this.breadcrumbs);
         });
     }
 
     public changeBreadcrumb(route: ActivatedRouteSnapshot, name) {
         let rootUrl = this.createRootUrl(route);        
-        let breadcrumb = this.breadcrumbsCollection.find(bc => bc.url == rootUrl);
+        let breadcrumb = this.breadcrumbs.find(bc => bc.url == rootUrl);
 
         breadcrumb.displayName = name;
 
-        this.onBreadcrumbChange.emit(this.breadcrumbsCollection);
+        this.onBreadcrumbChange.emit(this.breadcrumbs);
     }
 
     private createBreadcrumb(route: ActivatedRouteSnapshot, url: string): Breadcrumb {

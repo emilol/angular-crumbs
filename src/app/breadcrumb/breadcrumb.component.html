@@ -1,6 +1,6 @@
 ﻿<div class="container">
     <div class="nav-wrapper">
-        <div class="breadcrumb" *ngFor="let route of breadcrumbsCollection" [ngClass]="{'last': route.terminal}">
+        <div class="breadcrumb" *ngFor="let route of breadcrumbs" [ngClass]="{'last': route.terminal}">
             <!-- disable link of last item -->
             <a href="" *ngIf="!route.terminal" [routerLink]="[route.url]">{{ route.displayName }}</a>
             <span *ngIf="route.terminal">{{ route.displayName }}</span>
