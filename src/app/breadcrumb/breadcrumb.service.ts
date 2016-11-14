@@ -17,7 +17,8 @@ export class BreadcrumbService {
 
     constructor(private router: Router) {
         this.router.events.subscribe((routeEvent: RoutesRecognized) => {
-            if (!routeEvent.state) return;
+            if (!(routeEvent instanceof RoutesRecognized)) return;
+            
             let route = routeEvent.state.root;
             let url = "";
 
