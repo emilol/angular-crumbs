@@ -1,5 +1,7 @@
 # Angular2 Breadcrumb
 
+blog post at [emilol.com](http://emilol.com/angular-2-breadcrumb-component/)
+
 This project was forked from [angular2-seed](https://github.com/angular/angular2-seed)
 
 ## How it works
