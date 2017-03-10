@@ -2,7 +2,7 @@
 
 ## Installation
 
-```sh
+```shell
 npm install angular2-crumbs --save
 ```
 
@@ -14,7 +14,7 @@ npm install angular2-crumbs --save
 Import `BreadcrumbModule.forRoot()` in the NgModule of your application. 
 The `forRoot` method is a convention for modules that provide a singleton service.
 
-```ts
+```typescript
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from '@angular/core';
 import {BreadcrumbModule} from 'angular2-crumbs';
@@ -26,32 +26,31 @@ import {BreadcrumbModule} from 'angular2-crumbs';
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
 ```
 #### 3. Set breadcumbs in `app.routes`
-```js
-	export const rootRouterConfig: Routes = [  
-	  {path: '', redirectTo: 'home', pathMatch: 'full'},  
-	  {path: 'home', component: HomeComponent, data: { breadcrumb: 'Home'}},  
-	  {path: 'about', component: AboutComponent, data: { breadcrumb: 'About'}},  
-	  {path: 'github', component: RepoBrowserComponent, data: { breadcrumb: 'GitHub'},  
-	    children: [  
-	      {path: '', component: RepoListComponent},  
-	      {path: ':org', component: RepoListComponent, data: { breadcrumb: 'Repo List'},  
-	        children: [  
-	          {path: '', component: RepoDetailComponent},  
-	          {path: ':repo', component: RepoDetailComponent, data: { breadcrumb: 'Repo'}}  
-	        ]  
-	      }]  
-	  }  
-	];
+```javascript
+export const rootRouterConfig: Routes = [  
+    {path: '', redirectTo: 'home', pathMatch: 'full'},  
+    {path: 'home', ..., data: { breadcrumb: 'Home'}},  
+    {path: 'about', ..., data: { breadcrumb: 'About'}},  
+    {path: 'github', ..., data: { breadcrumb: 'GitHub'},  
+        children: [  
+            {path: '', ...},  
+            {path: ':org', ..., data: { breadcrumb: 'Repo List'},  
+                children: [  
+                    {path: '', ...},  
+                    {path: ':repo', ..., data: { breadcrumb: 'Repo'}}  
+                ]  
+        }]  
+    }  
+];
 ```
 
 #### 4. Use the `BreadcrumbService` for your application
 - Import `BreadcrumbService` from `angular2-crumbs` to update your page title based on the active route:
 
-```ts
+```typescript
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Breadcrumb, BreadcrumbService } from 'angular2-crumbs';
@@ -64,6 +63,7 @@ export class AppComponent {
     constructor(
         private titleService: Title,
         private breadcrumbService: BreadcrumbService) {
+
         breadcrumbService.onBreadcrumbChange.subscribe((crumbs) => {
             this.titleService.setTitle(this.createTitle(crumbs));
         });
@@ -73,14 +73,16 @@ export class AppComponent {
         const title = 'Angular2 Breadcrumb';
         const titles = routesCollection.filter((route) => route.displayName);
 
-        if (titles.length) {
-            const routeTitle = titles
-                .reduce((prev, curr) => { return `${curr.displayName} - ${prev}`; }, "");
+        if (!titles.length) return title;
+        
+        const routeTitle = this.titlesToString(titles);
+        return `${routeTitle} ${title}`;
+    }
 
-            return `${routeTitle} ${title}`;
-        }
-
-        return title;
+    private titlesToString(titles) {
+        titles.reduce((prev, curr) => { 
+            return `${curr.displayName} - ${prev}`; 
+        }, "");
     }
 }
 ```

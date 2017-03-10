@@ -1,6 +1,6 @@
 {
   "name": "angular2-crumbs",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "A route-based Angular 2 breadcrumb component and service. Allows breadcrumb descriptions to be set based on route data, or as the result of an API call.",
   "main": "lib/index.js",
   "typings": "lib/index",
