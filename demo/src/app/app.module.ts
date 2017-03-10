@@ -5,8 +5,8 @@ import {AppComponent} from "./app.component";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
+import {BreadcrumbModule} from "angular2-crumbs";
 import {AboutComponent} from './about/about.component';
-import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
 import {HomeComponent} from './home/home.component';
 import {RepoBrowserComponent} from './github/repo-browser/repo-browser.component';
 import {RepoListComponent} from './github/repo-list/repo-list.component';
@@ -20,10 +20,26 @@ const APP_PROVIDERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, RepoBrowserComponent, RepoListComponent, RepoDetailComponent, HomeComponent, BreadcrumbComponent],
-  imports     : [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(rootRouterConfig)],
-  providers   : [APP_PROVIDERS, {provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap   : [AppComponent]
+  declarations: [
+    AppComponent, 
+    AboutComponent, 
+    RepoBrowserComponent,
+    RepoListComponent, 
+    RepoDetailComponent, 
+    HomeComponent    
+  ],
+  imports: [
+    BrowserModule, 
+    BreadcrumbModule.forRoot(),
+    FormsModule, 
+    HttpModule, 
+    RouterModule.forRoot(rootRouterConfig)
+  ],
+  providers: [
+    APP_PROVIDERS, 
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
+  bootstrap: [AppComponent]
 })
 
 export class AppModule {

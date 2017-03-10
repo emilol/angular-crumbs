@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "outDir": "lib",
+    "rootDir": ".",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+     "types": [
+       "core-js",
+       "node"
+     ]
+  },
+  "files": [
+    "index.ts",
+    "./src/breadcrumb.component.ts",
+    "./src/breadcrumb.service.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {BreadcrumbService} from 'angular2-crumbs';
 import {GithubService} from '../shared/github.service';
-import {BreadcrumbService} from '../../breadcrumb';
 
 @Component({
   selector: 'repo-detail',

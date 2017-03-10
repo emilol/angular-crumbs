@@ -11,7 +11,7 @@ export class Breadcrumb {
 
 @Injectable()
 export class BreadcrumbService {
-    onBreadcrumbChange: EventEmitter<any> = new EventEmitter<Breadcrumb[]>(false);
+    onBreadcrumbChange: EventEmitter<Breadcrumb[]> = new EventEmitter<Breadcrumb[]>(false);
 
     private breadcrumbs: Breadcrumb[];
 
@@ -39,7 +39,7 @@ export class BreadcrumbService {
         });
     }
 
-    public changeBreadcrumb(route: ActivatedRouteSnapshot, name) {
+    public changeBreadcrumb(route: ActivatedRouteSnapshot, name: string) {
         let rootUrl = this.createRootUrl(route);        
         let breadcrumb = this.breadcrumbs.find(bc => bc.url == rootUrl);
 

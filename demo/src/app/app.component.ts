@@ -1,10 +1,12 @@
-import {Component} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Breadcrumb, BreadcrumbService } from './breadcrumb'
+import { Breadcrumb, BreadcrumbService } from 'angular2-crumbs';
 
 @Component({
   selector   : 'app',
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
     constructor(
