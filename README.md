@@ -89,5 +89,39 @@ export class AppComponent {
 
 ![Breadcrumb Demo](http://imgur.com/S2PSW3W.png)
 
+## Customization
+
+You can BYO template using the breadcrumb's ng-content transclude. 
+
+### Bootstrap breadcrumb:
+
+```html 
+<breadcrumb #parent>
+  <nav class="breadcrumb">
+    <template ngFor let-route [ngForOf]="parent.breadcrumbs">
+      <a    *ngIf="!route.terminal" class="breadcrumb-item" href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+      <span *ngIf="route.terminal"  class="breadcrumb-item active">{{ route.displayName }}</span>
+    </template>
+  </nav>
+</breadcrumb>
+```
+
+### Materialize Breadcrumb
+
+```html
+<breadcrumb #parent>
+  <nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <template ngFor let-route [ngForOf]="parent.breadcrumbs">
+          <a    *ngIf="!route.terminal" class="breadcrumb" href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+          <span *ngIf="route.terminal"  class="breadcrumb">{{ route.displayName }}</span>
+        </template>
+      </div>
+    </div>
+  </nav>
+</breadcrumb>
+```
+
 # License
  [MIT](/LICENSE)
