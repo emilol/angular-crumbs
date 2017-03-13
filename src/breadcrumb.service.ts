@@ -62,15 +62,16 @@ export class BreadcrumbService {
 
     private createRootUrl(route: ActivatedRouteSnapshot) {
         let url = "";
+        let next = route.root;
 
-        route = route.root;
+        while (next.firstChild !== route) {
+            next = next.firstChild;
+            if (!next.routeConfig.path) continue;
 
-        while (route.children.length) {
-            route = route.firstChild;
-            if (!route.routeConfig.path) continue;
-
-            url += `/${this.createUrl(route)}`;
+            url += `/${this.createUrl(next)}`;
         }
+        
+        url += `/${this.createUrl(route)}`;
 
         return url;
     }
