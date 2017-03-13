@@ -6,11 +6,7 @@
 npm install angular2-crumbs --save
 ```
 
-#### 1. Update the markup
-- Import the `style.css` into your web page
-- Add `<breadcrumb></breadcrumb>` tag in template of your application component.
-
-#### 2. Import the `BreadcrumbModule`
+#### 1. Import the `BreadcrumbModule`
 Import `BreadcrumbModule.forRoot()` in the NgModule of your application. 
 The `forRoot` method is a convention for modules that provide a singleton service.
 
@@ -28,7 +24,8 @@ import {BreadcrumbModule} from 'angular2-crumbs';
 })
 export class AppModule {}
 ```
-#### 3. Set breadcumbs in `app.routes`
+
+#### 2. Set breadcumbs in `app.routes`
 ```javascript
 export const rootRouterConfig: Routes = [  
     {path: '', redirectTo: 'home', pathMatch: 'full'},  
@@ -47,55 +44,21 @@ export const rootRouterConfig: Routes = [
 ];
 ```
 
-#### 4. Use the `BreadcrumbService` for your application
-- Import `BreadcrumbService` from `angular2-crumbs` to update your page title based on the active route:
-
-```typescript
-import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { Breadcrumb, BreadcrumbService } from 'angular2-crumbs';
-
-@Component({
-  selector   : 'app',
-  templateUrl: './app.component.html'
-})
-export class AppComponent {
-    constructor(
-        private titleService: Title,
-        private breadcrumbService: BreadcrumbService) {
-
-        breadcrumbService.onBreadcrumbChange.subscribe((crumbs) => {
-            this.titleService.setTitle(this.createTitle(crumbs));
-        });
-    }
-    
-    private createTitle(routesCollection: Breadcrumb[]) {
-        const title = 'Angular2 Breadcrumb';
-        const titles = routesCollection.filter((route) => route.displayName);
-
-        if (!titles.length) return title;
-        
-        const routeTitle = this.titlesToString(titles);
-        return `${routeTitle} ${title}`;
-    }
-
-    private titlesToString(titles) {
-        titles.reduce((prev, curr) => { 
-            return `${curr.displayName} - ${prev}`; 
-        }, "");
-    }
-}
-```
+#### 3. Update the markup
+- Import the `style.css` into your web page
+- Add `<breadcrumb></breadcrumb>` tag in template of your application component.
 
 ## Demo
 
-![Breadcrumb Demo](http://imgur.com/S2PSW3W.png)
+![Breadcrumb Demo](http://i.imgur.com/CTDwBUK.png)
 
 ## Customization
 
+### Template Customization
+
 You can BYO template using the breadcrumb's ng-content transclude. 
 
-### Bootstrap breadcrumb:
+#### Bootstrap breadcrumb:
 
 ```html 
 <breadcrumb #parent>
@@ -108,7 +71,7 @@ You can BYO template using the breadcrumb's ng-content transclude.
 </breadcrumb>
 ```
 
-### Materialize Breadcrumb
+#### Materialize Breadcrumb
 
 ```html
 <breadcrumb #parent>
@@ -123,6 +86,36 @@ You can BYO template using the breadcrumb's ng-content transclude.
     </div>
   </nav>
 </breadcrumb>
+```
+
+### Dynamic breadcrumbs 
+
+Use `BreadcrumbService` to set the breadcrumb description dynamically. [See full demo example](https://github.com/emilol/angular2-crumbs/blob/master/demo/src/app/github/repo-detail/repo-detail.component.ts)
+
+```typescript
+ngOnInit() {
+  ...      
+  this.github
+    .getRepoForOrg(this.org, this.repo)
+    .subscribe(repoDetails => {
+        ...
+        this.breadcrumbService.changeBreadcrumb(this.route.snapshot, repoDetails.name);
+
+  });
+  ...
+}
+```
+
+### Dynamic page titles
+
+Use `BreadcrumbService` to subscribe to breadcrumb changes. [See full demo example](https://github.com/emilol/angular2-crumbs/blob/master/demo/src/app/app.component.ts)
+
+```typescript
+ngOnInit() {
+  this.breadcrumbService.onBreadcrumbChange.subscribe((crumbs) => {
+    this.titleService.setTitle(this.createTitle(crumbs));
+  });
+}
 ```
 
 # License
