@@ -5,6 +5,7 @@
     "outDir": "lib",
     "rootDir": ".",
     "sourceMap": true,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
