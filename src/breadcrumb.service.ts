@@ -1,6 +1,6 @@
 ﻿import { Component, Injectable, EventEmitter } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { Router, RoutesRecognized, NavigationEnd, ActivatedRouteSnapshot } from "@angular/router";
+import { Router, RoutesRecognized, NavigationEnd, ActivatedRouteSnapshot, ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs/Rx";
 
 export class Breadcrumb {
@@ -13,13 +13,13 @@ export class Breadcrumb {
 export class BreadcrumbService {
     onBreadcrumbChange: EventEmitter<Breadcrumb[]> = new EventEmitter<Breadcrumb[]>(false);
 
-    private breadcrumbs: Breadcrumb[];
+    private breadcrumbs: Breadcrumb[] = [];
 
     constructor(private router: Router) {
-        this.router.events.subscribe((routeEvent: RoutesRecognized) => {
-            if (!(routeEvent instanceof RoutesRecognized)) return;
+        this.router.events.subscribe((routeEvent: NavigationEnd) => {
+            if (!(routeEvent instanceof NavigationEnd)) return;
 
-            let route = routeEvent.state.root;
+            let route = this.router.routerState.root.snapshot;
             let url = "";
 
             this.breadcrumbs = [];
@@ -40,8 +40,8 @@ export class BreadcrumbService {
     }
 
     public changeBreadcrumb(route: ActivatedRouteSnapshot, name: string) {
-        let rootUrl = this.createRootUrl(route);        
-        let breadcrumb = this.breadcrumbs.find(bc => bc.url == rootUrl);
+        let rootUrl = this.createRootUrl(route);
+        let breadcrumb = this.breadcrumbs.find(bc => bc.url === rootUrl);
 
         breadcrumb.displayName = name;
 
@@ -70,7 +70,7 @@ export class BreadcrumbService {
 
             url += `/${this.createUrl(next)}`;
         }
-        
+
         url += `/${this.createUrl(route)}`;
 
         return url;
