@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core'
-import {RouterModule} from "@angular/router";
-import {rootRouterConfig} from "./app.routes";
-import {AppComponent} from "./app.component";
-import {FormsModule} from "@angular/forms";
-import {BrowserModule} from "@angular/platform-browser";
-import {HttpModule} from "@angular/http";
-import {BreadcrumbModule} from "angular2-crumbs";
+import {RouterModule} from '@angular/router';
+import {rootRouterConfig} from './app.routes';
+import {AppComponent} from './app.component';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpModule} from '@angular/http';
+import {BreadcrumbModule} from 'angular-crumbs';
 import {AboutComponent} from './about/about.component';
 import {HomeComponent} from './home/home.component';
 import {RepoBrowserComponent} from './github/repo-browser/repo-browser.component';
@@ -21,22 +21,22 @@ const APP_PROVIDERS = [
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    AboutComponent, 
+    AppComponent,
+    AboutComponent,
     RepoBrowserComponent,
-    RepoListComponent, 
-    RepoDetailComponent, 
-    HomeComponent    
+    RepoListComponent,
+    RepoDetailComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule, 
-    BreadcrumbModule.forRoot(),
-    FormsModule, 
-    HttpModule, 
+    BrowserModule,
+    BreadcrumbModule,
+    FormsModule,
+    HttpModule,
     RouterModule.forRoot(rootRouterConfig)
   ],
   providers: [
-    APP_PROVIDERS, 
+    APP_PROVIDERS,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]

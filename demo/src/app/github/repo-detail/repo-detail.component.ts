@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {BreadcrumbService} from 'angular2-crumbs';
+import {BreadcrumbService} from 'angular-crumbs';
 import {GithubService} from '../shared/github.service';
 
 @Component({
@@ -9,11 +9,11 @@ import {GithubService} from '../shared/github.service';
   templateUrl: './repo-detail.component.html'
 })
 export class RepoDetailComponent implements OnInit {
-  private org:string;
-  private repo:string;
-  public repoDetails:any = {};
+  private org: string;
+  private repo: string;
+  public repoDetails: any = {};
 
-  constructor(public github:GithubService, private breadcrumbService: BreadcrumbService, private route:ActivatedRoute) {
+  constructor(public github: GithubService, private breadcrumbService: BreadcrumbService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
