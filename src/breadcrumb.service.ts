@@ -3,11 +3,7 @@ import { Title } from "@angular/platform-browser";
 import { Router, RoutesRecognized, NavigationEnd, ActivatedRouteSnapshot, ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs/Rx";
 
-export class Breadcrumb {
-    displayName: string;
-    terminal: boolean;
-    url: string;
-}
+import { Breadcrumb } from './breadcrumb';
 
 @Injectable()
 export class BreadcrumbService {

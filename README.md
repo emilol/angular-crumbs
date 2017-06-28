@@ -1,24 +1,23 @@
-# Angular2 Breadcrumb
+# Angular Breadcrumb
 
 ## Installation
 
 ```shell
-npm install angular2-crumbs --save
+npm install angular-crumbs --save
 ```
 
 #### 1. Import the `BreadcrumbModule`
-Import `BreadcrumbModule.forRoot()` in the NgModule of your application. 
-The `forRoot` method is a convention for modules that provide a singleton service.
+Import `BreadcrumbModule` in the NgModule of your application.
 
 ```typescript
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from '@angular/core';
-import {BreadcrumbModule} from 'angular2-crumbs';
+import {BreadcrumbModule} from 'angular-crumbs';
 
 @NgModule({
     imports: [
         BrowserModule,
-        BreadcrumbModule.forRoot()
+        BreadcrumbModule
     ],
     bootstrap: [AppComponent]
 })
@@ -50,7 +49,7 @@ export const rootRouterConfig: Routes = [
 
 ## Demo
 
-![Breadcrumb Demo](http://i.imgur.com/CTDwBUK.png)
+![Breadcrumb Demo](https://i.imgur.com/QcpGLu6.png)
 
 ## Customization
 
@@ -63,10 +62,10 @@ You can BYO template using the breadcrumb's ng-content transclude.
 ```html 
 <breadcrumb #parent>
   <nav class="breadcrumb">
-    <template ngFor let-route [ngForOf]="parent.breadcrumbs">
+    <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
       <a    *ngIf="!route.terminal" class="breadcrumb-item" href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
       <span *ngIf="route.terminal"  class="breadcrumb-item active">{{ route.displayName }}</span>
-    </template>
+    </ng-template>
   </nav>
 </breadcrumb>
 ```
@@ -90,7 +89,7 @@ You can BYO template using the breadcrumb's ng-content transclude.
 
 ### Dynamic breadcrumbs 
 
-Use `BreadcrumbService` to set the breadcrumb description dynamically. [See full demo example](https://github.com/emilol/angular2-crumbs/blob/master/demo/src/app/github/repo-detail/repo-detail.component.ts)
+Use `BreadcrumbService` to set the breadcrumb description dynamically. [See full demo example](https://github.com/emilol/angular-crumbs/blob/master/demo/src/app/github/repo-detail/repo-detail.component.ts)
 
 ```typescript
 ngOnInit() {
@@ -108,11 +107,11 @@ ngOnInit() {
 
 ### Dynamic page titles
 
-Use `BreadcrumbService` to subscribe to breadcrumb changes. [See full demo example](https://github.com/emilol/angular2-crumbs/blob/master/demo/src/app/app.component.ts)
+Use `BreadcrumbService` to subscribe to breadcrumb changes. [See full demo example](https://github.com/emilol/angular-crumbs/blob/master/demo/src/app/app.component.ts)
 
 ```typescript
 ngOnInit() {
-  this.breadcrumbService.onBreadcrumbChange.subscribe((crumbs) => {
+  this.breadcrumbService.breadcrumbChanged.subscribe((crumbs) => {
     this.titleService.setTitle(this.createTitle(crumbs));
   });
 }
