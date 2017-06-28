@@ -1,12 +1,15 @@
-﻿import { Component } from "@angular/core";
-import { Breadcrumb, BreadcrumbService } from "./breadcrumb.service"
+import { Component, OnInit } from '@angular/core';
+
+import { Breadcrumb } from './breadcrumb';
+import { BreadcrumbService } from './breadcrumb.service';
 
 @Component({
-    selector: "breadcrumb",
-    template: 
-`<div #template>
+    // tslint:disable-next-line:component-selector
+    selector: 'breadcrumb',
+    template:
+    `<div #template>
     <ng-content></ng-content>
-</div>    
+</div>
 <div class="container" *ngIf="template.children.length == 0">
     <div class="nav-wrapper">
         <div class="breadcrumb" *ngFor="let route of breadcrumbs" [ngClass]="{'last': route.terminal}">
@@ -21,8 +24,10 @@ export class BreadcrumbComponent {
     breadcrumbs: Breadcrumb[];
 
     constructor(private breadcrumbService: BreadcrumbService) {
-        breadcrumbService.onBreadcrumbChange.subscribe((crumbs: Breadcrumb[]) => {
-            this.breadcrumbs = crumbs;
-        });
+        breadcrumbService.breadcrumbChanged.subscribe((crumbs: Breadcrumb[]) => { this.onBreadcrumbChange(crumbs); });
+    }
+
+    private onBreadcrumbChange(crumbs: Breadcrumb[]) {
+        this.breadcrumbs = crumbs;
     }
 }
