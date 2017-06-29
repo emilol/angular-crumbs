@@ -1,44 +1,44 @@
 {
-    "name": "angular2-crumbs",
-    "version": "1.2.0",
-    "description": "A route-based Angular 2 breadcrumb component and service. Allows breadcrumb descriptions to be set based on route data, or as the result of an API call.",
-    "main": "lib/index.js",
-    "typings": "lib/index",
-    "files": [
-        "lib/",
-        "style.css"
-    ],
-    "scripts": {
-        "build": "tsc && ts-npm-lint --fix-typings",
-        "test": "echo \"Error: no test specified\""
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/emilol/angular-crumbs.git"
-    },
-    "keywords": [
-        "angular",
-        "angular2",
-        "breadcrumb"
-    ],
-    "author": "Emily Poole",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/emilol/angular-crumbs/issues"
-    },
-    "homepage": "https://github.com/emilol/angular-crumbs/tree/angular2-crumbs#readme",
-    "peerDependencies": {
-        "@angular/core": ">=2.0.0 <5.0.0"
-    },
-    "devDependencies": {
-        "@angular/common": ">=2.0.0 <5.0.0",
-        "@angular/core": ">=2.0.0 <5.0.0",
-        "@angular/platform-browser": ">=2.0.0 <5.0.0",
-        "@angular/router": ">=2.0.0 <5.0.0",
-        "@types/core-js": "^0.9.36",
-        "@types/node": "^7.0.7",
-        "rxjs": "^5.3.0",
-        "typescript": "^2.2.1",
-        "zone.js": "^0.8.5"
-    }
+  "name": "angular2-crumbs",
+  "version": "1.2.1",
+  "description": "A route-based Angular 2 breadcrumb component and service. Allows breadcrumb descriptions to be set based on route data, or as the result of an API call.",
+  "main": "lib/index.js",
+  "typings": "lib/index",
+  "files": [
+    "lib/",
+    "style.css"
+  ],
+  "scripts": {
+    "build": "tsc && ts-npm-lint --fix-typings",
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilol/angular-crumbs.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "breadcrumb"
+  ],
+  "author": "Emily Poole",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emilol/angular-crumbs/issues"
+  },
+  "homepage": "https://github.com/emilol/angular-crumbs/tree/angular2-crumbs#readme",
+  "peerDependencies": {
+    "@angular/core": ">=2.0.0 <5.0.0"
+  },
+  "devDependencies": {
+    "@angular/common": ">=2.0.0 <5.0.0",
+    "@angular/core": ">=2.0.0 <5.0.0",
+    "@angular/platform-browser": ">=2.0.0 <5.0.0",
+    "@angular/router": ">=2.0.0 <5.0.0",
+    "@types/core-js": "^0.9.36",
+    "@types/node": "^7.0.7",
+    "rxjs": "^5.3.0",
+    "typescript": "^2.2.1",
+    "zone.js": "^0.8.5"
+  }
 }
