@@ -90,7 +90,7 @@ You can BYO template using the breadcrumb's ng-content transclude.
 
 ### Dynamic breadcrumbs 
 
-Use `BreadcrumbService` to set the breadcrumb description dynamically. [See full demo example](https://github.com/emilol/angular2-crumbs/blob/master/demo/src/app/github/repo-detail/repo-detail.component.ts)
+Use `BreadcrumbService` to set the breadcrumb description dynamically. [See full demo example](https://github.com/emilol/angular-crumbs/blob/angular2-crumbs/demo/src/app/github/repo-detail/repo-detail.component.ts)
 
 ```typescript
 ngOnInit() {
@@ -108,7 +108,7 @@ ngOnInit() {
 
 ### Dynamic page titles
 
-Use `BreadcrumbService` to subscribe to breadcrumb changes. [See full demo example](https://github.com/emilol/angular2-crumbs/blob/master/demo/src/app/app.component.ts)
+Use `BreadcrumbService` to subscribe to breadcrumb changes. [See full demo example](https://github.com/emilol/angular-crumbs/blob/angular2-crumbs/demo/src/app/app.component.ts)
 
 ```typescript
 ngOnInit() {
