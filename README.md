@@ -47,7 +47,7 @@ export const rootRouterConfig: Routes = [
 - Import the `style.css` into your web page
 - Add `<breadcrumb></breadcrumb>` tag in template of your application component.
 
-## Demo
+## Demo [(live)](https://emilol.github.io/angular-crumbs)
 
 ![Breadcrumb Demo](https://i.imgur.com/QcpGLu6.png)
 
