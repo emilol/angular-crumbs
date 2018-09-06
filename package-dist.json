@@ -1,6 +1,6 @@
 {
     "name": "angular-crumbs",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "description": "A route-based Angular breadcrumb component and service. Allows breadcrumb descriptions to be set based on route data, or as the result of an API call.",
     "main": "bundles/angular-crumbs.umd.min.js",
     "module": "index.js",

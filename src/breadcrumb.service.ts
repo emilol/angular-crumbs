@@ -70,16 +70,16 @@ export class BreadcrumbService {
         let url = '';
         let next = route.root;
 
-        while (next.firstChild !== route && next.firstChild !== null) {
+        while (next.firstChild !== null) {
             next = next.firstChild;
 
             if (next.routeConfig === null) { continue; }
             if (!next.routeConfig.path) { continue; }
 
             url += `/${this.createUrl(next)}`;
-        }
 
-        url += `/${this.createUrl(route)}`;
+            if (next === route) { break; }
+        }
 
         return url;
     }
