@@ -1,0 +1,53 @@
+<nav class="navbar navbar-dark bg-primary">
+  <ul class="navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link active" href="https://emilol.github.io/angular-crumbs">Demo list</a>
+      </li>
+  </ul>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="sidebar col bg-light">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/about']">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/github']">GitHub</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/github', 'angular']">GitHub - Angular</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/github', 'twbs']">GitHub - Bootstrap</a>
+            </li>
+            <li class="nav-item">
+                <repo-browser></repo-browser>
+            </li>
+          </ul>
+    </div>
+    <div class="main-content col-9">
+        <nav aria-label="breadcrumb">
+            <breadcrumb #parent>
+                <ol class="breadcrumb">
+                    <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
+                        <li *ngIf="!route.terminal" class="breadcrumb-item">
+                            <a href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+                        </li>
+                        <li *ngIf="route.terminal" class="breadcrumb-item active" aria-current="page">{{ route.displayName }}</li>
+                    </ng-template>
+                </ol>
+            </breadcrumb>
+        </nav>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-light bg-secondary">
+  <footer>© 2018</footer>
+</nav>

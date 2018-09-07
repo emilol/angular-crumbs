@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+    <a mat-button href="https://emilol.github.io/angular-crumbs">Demo list</a>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <mat-list>
+            <mat-list-item>
+                <a [routerLink]="['/']">Home</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a [routerLink]="['/about']">About</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a [routerLink]="['/github']">GitHub</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a [routerLink]="['/github', 'angular']">GitHub - Angular</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a [routerLink]="['/github', 'twbs']">GitHub - Bootstrap</a>
+            </mat-list-item>
+            <mat-list-item>
+                <repo-browser></repo-browser>
+            </mat-list-item>
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-toolbar>
+            <breadcrumb #parent>
+              <span class="breadcrumb" *ngFor="let route of parent.breadcrumbs">
+                  <a mat-button *ngIf="!route.terminal" href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+                  <a mat-button *ngIf="route.terminal">{{ route.displayName }}</a>
+              </span>
+            </breadcrumb>
+        </mat-toolbar>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-drawer-content>
+</mat-drawer-container>
+<mat-toolbar>
+    <footer>© 2018</footer>
+</mat-toolbar>
