@@ -31,7 +31,6 @@ export class BreadcrumbService {
         let url = '';
 
         var breadCrumbIndex = 0;
-        var existingCount = this.breadcrumbs.length;
         var newCrumbs = [];
 
         while (route.firstChild != null) {
@@ -46,7 +45,7 @@ export class BreadcrumbService {
 
             var newCrumb = this.createBreadcrumb(route, url)
 
-            if (breadCrumbIndex < existingCount) {
+            if (breadCrumbIndex < this.breadcrumbs.length) {
               var existing = this.breadcrumbs[breadCrumbIndex++];
 
               if (existing && existing.route == route.routeConfig) {
