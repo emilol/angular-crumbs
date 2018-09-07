@@ -12,10 +12,9 @@ export class RepoBrowserComponent {
   constructor(private router: Router, private github: GithubService) {
   }
 
-  searchForOrg(orgName: string) {
+  searchForOrganisation(orgName: string) {
     this.github.getOrg(orgName)
       .subscribe((org) => {
-        console.log(org);
         this.router.navigate(['/github', org.name]);
       });
   }

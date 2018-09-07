@@ -13,7 +13,7 @@ export const rootRouterConfig: Routes = [
   {path: 'about', component: AboutComponent, data: { breadcrumb: 'About'}},
   {path: 'github', component: GitHubComponent, data: { breadcrumb: 'GitHub'},
     children: [
-      {path: '', component: RepoBrowserComponent},
+      {path: '', component: HomeComponent},
       {path: ':org', component: OrganisationComponent, data: { breadcrumb: 'Organisation'},
         children: [
           {path: '', component: RepoListComponent },

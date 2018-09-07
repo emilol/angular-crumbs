@@ -11,13 +11,15 @@ export class OrganisationComponent {
   organisation: { name?:string, avatar_url?:string } = {};
 
   constructor(private route: ActivatedRoute, private github: GithubService, private breadcrumbService: BreadcrumbService) {
-    this.searchForOrg(route.snapshot.params['org']);
+    this.searchForOrganisation(route.snapshot.params['org']);
     route.params.subscribe(params => {
-      this.searchForOrg(params['org']);
+      this.searchForOrganisation(params['org']);
     });
   }
 
-  searchForOrg(orgName: string) {
+  searchForOrganisation(orgName: string) {
+    if (!orgName) return;
+
     this.github.getOrg(orgName)
       .subscribe((org) => {
         this.organisation = org;
