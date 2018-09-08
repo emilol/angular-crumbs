@@ -1,8 +1,8 @@
 <h3>Repositories</h3>
-<mat-list>
-  <mat-list-item *ngFor="let repo of repos | async">
+<ul>
+  <li *ngFor="let repo of repos | async">
     <a [routerLink]="['/github', repo.owner.login, repo.name]">
       {{ repo.name }}
     </a>
-  </mat-list-item>
-</mat-list>
+  </li>
+</ul>

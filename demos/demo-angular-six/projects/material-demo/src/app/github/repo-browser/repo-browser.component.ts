@@ -15,7 +15,7 @@ export class RepoBrowserComponent {
   searchForOrganisation(orgName: string) {
     this.github.getOrg(orgName)
       .subscribe((org) => {
-        this.router.navigate(['/github', org.name]);
+        this.router.navigate(['/github', org.login]);
       });
   }
 

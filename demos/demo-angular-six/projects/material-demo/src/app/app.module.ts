@@ -20,15 +20,15 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
-import { GitHubComponent } from './github/github.component';
+import { AboutComponent } from 'src/app/shared/about/about.component';
+import { HomeComponent } from 'src/app/shared/home/home.component';
+import { GitHubComponent } from 'src/app/shared/github/github.component';
 import { RepoBrowserComponent } from './github/repo-browser/repo-browser.component';
-import { RepoListComponent } from './github/repo-list/repo-list.component';
-import { RepoDetailComponent } from './github/repo-detail/repo-detail.component';
-import { HomeComponent } from './home/home.component';
+import { RepoListComponent } from 'src/app/shared/github/repo-list/repo-list.component';
+import { RepoDetailComponent } from 'src/app/shared/github/repo-detail/repo-detail.component';
+import { OrganisationComponent } from 'src/app/shared/github/organisation/organisation.component';
 
 import { APP_RESOLVER_PROVIDERS } from 'src/app/app.resolver';
-import { OrganisationComponent } from './github/organisation/organisation.component';
 
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,

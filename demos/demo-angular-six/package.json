@@ -25,6 +25,8 @@
     "angular-crumbs": "^2.0.5",
     "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
+    "primeicons": "^1.0.0-beta.10",
+    "primeng": "^6.1.3",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

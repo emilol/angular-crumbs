@@ -4,7 +4,7 @@
   </a>
   <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-          <a class="nav-link active" href="https://emilol.github.io/angular-crumbs">Other Demos</a>
+          <a class="nav-link active" [routerLink]="['/']">Other Demos</a>
       </li>
   </ul>
   <a class="github-button" href="https://github.com/emilol/angular-crumbs" data-size="large" data-show-count="true" aria-label="Star emilol/angular-crumbs on GitHub"></a>
@@ -22,14 +22,9 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/github']">GitHub</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/github', 'angular']">
-                  <i class="oi oi-chevron-right"></i>&nbsp;Angular
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/github', 'twbs']">
-                  <i class="oi oi-chevron-right"></i>&nbsp;Bootstrap
+            <li class="nav-item" *ngFor="let item of shortcuts">
+                <a class="nav-link" [routerLink]="['/github', item.id]">
+                  <i class="oi oi-chevron-right"></i>&nbsp;{{item.title}}
                 </a>
             </li>
             <li class="nav-item">
@@ -37,7 +32,7 @@
             </li>
         </ul>
     </div>
-    <div class="main-content col-9">
+    <div class="main-content col-10">
         <nav aria-label="breadcrumb">
             <breadcrumb #parent>
                 <ol class="breadcrumb">

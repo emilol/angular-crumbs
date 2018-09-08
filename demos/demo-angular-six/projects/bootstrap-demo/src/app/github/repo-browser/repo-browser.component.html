@@ -1,7 +1,9 @@
 <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="Search Github Orgs"
-        aria-label="Search Github Orgs" aria-describedby="search" #repoName>
+        aria-label="Search Github Organisations" aria-describedby="search" #repoName>
     <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="search" (click)="searchForOrganisation(repoName.value)">search</button>
+        <button class="btn btn-secondary" type="button" id="search" (click)="searchForOrganisation(repoName.value)">
+            <i class="oi oi-magnifying-glass" title="search" aria-label="search"></i>
+        </button>
     </div>
 </div>

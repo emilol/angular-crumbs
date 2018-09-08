@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<p-menubar [model]="menuBarItems">
+    <a class="github-button" href="https://github.com/emilol/angular-crumbs" data-size="large" data-show-count="true" aria-label="Star emilol/angular-crumbs on GitHub"></a>
+</p-menubar>
+<div class="ui-g">
+    <div class="ui-g-2">
+        <p-menu [model]="items" [style]="{'width':'100%'}"></p-menu><br />
+        <repo-browser></repo-browser>
+    </div>
+    <div class="ui-g-10">
+        <p-card>
+            <p-breadcrumb [model]="breadcrumbs"></p-breadcrumb><br />
+            <router-outlet></router-outlet>
+        </p-card>
+    </div>
+</div>

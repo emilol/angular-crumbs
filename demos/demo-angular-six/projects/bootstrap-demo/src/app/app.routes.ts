@@ -1,11 +1,11 @@
-import {Routes} from '@angular/router';
-import {AboutComponent} from './about/about.component';
-import {HomeComponent} from './home/home.component';
-import {RepoBrowserComponent} from './github/repo-browser/repo-browser.component';
-import {RepoDetailComponent} from './github/repo-detail/repo-detail.component';
-import { GitHubComponent } from './github/github.component';
-import { OrganisationComponent } from './github/organisation/organisation.component';
-import { RepoListComponent } from './github/repo-list/repo-list.component';
+import { Routes } from '@angular/router';
+import { AboutComponent } from 'src/app/shared/about/about.component';
+import { HomeComponent } from 'src/app/shared/home/home.component';
+import { RepoBrowserComponent } from './github/repo-browser/repo-browser.component';
+import { RepoDetailComponent } from 'src/app/shared/github/repo-detail/repo-detail.component';
+import { GitHubComponent } from 'src/app/shared/github/github.component';
+import { OrganisationComponent } from 'src/app/shared/github/organisation/organisation.component';
+import { RepoListComponent } from 'src/app/shared/github/repo-list/repo-list.component';
 
 export const rootRouterConfig: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},

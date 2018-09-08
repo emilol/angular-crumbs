@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
     <button mat-icon-button (click)="sideNav.toggle()"><mat-icon>menu</mat-icon></button>
     <a mat-icon-button [routerLink]="['/']"><mat-icon>home</mat-icon></a>
-    <a mat-button href="https://emilol.github.io/angular-crumbs">Other Demos</a>
+    <a mat-button [routerLink]="['/']">Other Demos</a>
     <span class="spacer"></span>
     <a class="github-button" href="https://github.com/emilol/angular-crumbs" data-size="large" data-show-count="true" aria-label="Star emilol/angular-crumbs on GitHub"></a>
 </mat-toolbar>
@@ -13,11 +13,10 @@
             <a mat-list-item [routerLink]="['/']">Home</a>
             <a mat-list-item [routerLink]="['/about']">About</a>
             <a mat-list-item [routerLink]="['/github']">GitHub</a>
-            <a mat-list-item [routerLink]="['/github', 'angular']">
-              <mat-icon>keyboard_arrow_right</mat-icon>Angular
-            </a>
-            <a mat-list-item [routerLink]="['/github', 'twbs']">
-              <mat-icon>keyboard_arrow_right</mat-icon>Bootstrap
+            <a [routerLink]="['/github', item.id]" *ngFor="let item of shortcuts">
+              <mat-list-item>
+                    <mat-icon>keyboard_arrow_right</mat-icon>{{item.title}}
+              </mat-list-item>
             </a>
             <mat-list-item>
                 <repo-browser></repo-browser>
@@ -33,7 +32,7 @@
               </span>
             </breadcrumb>
         </mat-toolbar>
-        <main>
+        <main class="mat-typography">
             <router-outlet></router-outlet>
         </main>
     </mat-drawer-content>

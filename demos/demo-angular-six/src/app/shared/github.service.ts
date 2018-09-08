@@ -18,6 +18,14 @@ export class GithubService {
     return this.makeRequest(`repos/${org}/${repo}`);
   }
 
+  getShorcuts() {
+      return [
+          { title: "Angular Repos", id: "angular" },
+          { title: "Bootstrap Repos", id: "twbs" },
+          { title: "PrimeFaces Repos", id: "primefaces" }
+      ];
+  }
+
   private makeRequest(path: string) {
     let params = new URLSearchParams();
     params.set('per_page', '100');
