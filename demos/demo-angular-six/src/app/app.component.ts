@@ -38,11 +38,11 @@ export class AppComponent {
 
   get shortcuts() {
     return this.github.getShorcuts().map(s =>
-        <MenuItem>{ label: s.title, icon: 'fa fa-chevron-right', routerLink: [`/github/${s.id}`] }
+        <MenuItem>{ label: s.title, icon: 'fa fa-chevron-right', routerLink: ['/github', s.id] }
     );
   }
 
   private mapPrimeNgCrumbs(crumbs: Breadcrumb[]) : MenuItem[] {
-      return crumbs.map(c => <MenuItem>{ label: c.displayName, url: c.url});
+      return crumbs.map(c => <MenuItem>{ label: c.displayName, url: `#/${c.url}`});
   }
 }
