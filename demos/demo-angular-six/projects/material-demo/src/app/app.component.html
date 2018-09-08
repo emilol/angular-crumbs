@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
-    <a mat-button href="https://emilol.github.io/angular-crumbs">Demo list</a>
+    <a mat-icon-button [routerLink]="['/']"><mat-icon>home</mat-icon></a>
+    <a mat-button href="https://emilol.github.io/angular-crumbs">Other Demos</a>
+    <span class="spacer"></span>
+    <a class="github-button" href="https://github.com/emilol/angular-crumbs" data-size="large" data-show-count="true" aria-label="Star emilol/angular-crumbs on GitHub"></a>
 </mat-toolbar>
 <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>
