@@ -1,5 +1,7 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import {MediaMatcher} from '@angular/cdk/layout';
+
 import { Breadcrumb, BreadcrumbService } from 'angular-crumbs';
 
 @Component({
@@ -9,14 +11,27 @@ import { Breadcrumb, BreadcrumbService } from 'angular-crumbs';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
+    mobileQuery: MediaQueryList;
+    private _mobileQueryListener: () => void;
+
     constructor(
         private titleService: Title,
-        private breadcrumbService: BreadcrumbService) { }
+        private breadcrumbService: BreadcrumbService,
+        changeDetectorRef: ChangeDetectorRef,
+        media: MediaMatcher) {
+        this.mobileQuery = media.matchMedia('(max-width: 600px)');
+        this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+        this.mobileQuery.addListener(this._mobileQueryListener);
+    }
 
     ngOnInit() {
         this.breadcrumbService.breadcrumbChanged.subscribe((crumbs) => {
             this.titleService.setTitle(this.createTitle(crumbs));
         });
+    }
+
+    ngOnDestroy(): void {
+      this.mobileQuery.removeListener(this._mobileQueryListener);
     }
 
     private createTitle(routesCollection: Breadcrumb[]) {
