@@ -20,6 +20,7 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
+import { LayoutComponent } from './layout/layout.component';
 import { AboutComponent } from 'src/app/shared/about/about.component';
 import { HomeComponent } from 'src/app/shared/home/home.component';
 import { GitHubComponent } from 'src/app/shared/github/github.component';
@@ -37,6 +38,7 @@ const APP_PROVIDERS = [
 @NgModule({
   declarations: [
     AppComponent,
+    LayoutComponent,
     AboutComponent,
     RepoBrowserComponent,
     RepoListComponent,

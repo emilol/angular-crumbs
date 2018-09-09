@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectorRef, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {MediaMatcher} from '@angular/cdk/layout';
 
@@ -12,36 +12,21 @@ import { GithubService } from 'src/app/shared/github.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-    mobileQuery: MediaQueryList;
-    private _mobileQueryListener: () => void;
 
     constructor(
         private titleService: Title,
         private breadcrumbService: BreadcrumbService,
-        private github: GithubService,
-        changeDetectorRef: ChangeDetectorRef,
-        media: MediaMatcher) {
-        this.mobileQuery = media.matchMedia('(max-width: 600px)');
-        this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-        this.mobileQuery.addListener(this._mobileQueryListener);
+        private github: GithubService) {
     }
 
     get shortcuts() {
       return this.github.getShorcuts();
     }
 
-    link(item) {
-      return ['/github', item.id];
-    }
-
     ngOnInit() {
         this.breadcrumbService.breadcrumbChanged.subscribe((crumbs) => {
             this.titleService.setTitle(this.createTitle(crumbs));
         });
-    }
-
-    ngOnDestroy(): void {
-      this.mobileQuery.removeListener(this._mobileQueryListener);
     }
 
     private createTitle(routesCollection: Breadcrumb[]) {
