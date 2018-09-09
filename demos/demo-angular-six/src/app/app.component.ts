@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { MenuItem } from 'primeng/components/common/menuitem';
 import { BreadcrumbService, Breadcrumb } from 'angular-crumbs';
 import { GithubService } from './shared/github.service';
@@ -15,8 +16,10 @@ export class AppComponent {
   menuBarItems: MenuItem[];
   breadcrumbs: MenuItem[];
 
-  constructor(private breadcrumbService: BreadcrumbService, private github: GithubService) {
-
+  constructor(
+    private titleService: Title,
+    private breadcrumbService: BreadcrumbService,
+    private github: GithubService) {
   }
 
   ngOnInit() {
@@ -33,6 +36,7 @@ export class AppComponent {
       this.items = this.items.concat(this.shortcuts);
 
       this.breadcrumbService.breadcrumbChanged.subscribe(crumbs => {
+        this.titleService.setTitle(this.createTitle(crumbs));
         this.breadcrumbs = this.mapPrimeNgCrumbs(crumbs)
       });
   }
@@ -41,6 +45,22 @@ export class AppComponent {
     return this.github.getShorcuts().map(s =>
         <MenuItem>{ label: s.title, icon: 'fa fa-chevron-right', routerLink: ['/github', s.id] }
     );
+  }
+
+  private createTitle(routesCollection: Breadcrumb[]) {
+      const title = 'Angular Breadcrumb';
+      const titles = routesCollection.filter((route) => route.displayName);
+
+      if (!titles.length) { return title; }
+
+      const routeTitle = this.titlesToString(titles);
+      return `${routeTitle} ${title}`;
+  }
+
+  private titlesToString(titles) {
+      return titles.reduce((prev, curr) => {
+          return `${curr.displayName} - ${prev}`;
+      }, '');
   }
 
   private mapPrimeNgCrumbs(crumbs: Breadcrumb[]) : MenuItem[] {

@@ -49,47 +49,64 @@ export const rootRouterConfig: Routes = [
 
 ## Demo [(live)](https://emilol.github.io/angular-crumbs)
 
-![Breadcrumb Demo](https://i.imgur.com/QcpGLu6.png)
-
 ## Customization
 
 ### Template Customization
 
 You can BYO template using the breadcrumb's ng-content transclude. 
 
-#### Bootstrap breadcrumb:
+#### bootstrap breadcrumb:
 
 ```html 
-<breadcrumb #parent>
-  <nav class="breadcrumb">
+<breadcrumb #parent>  
+  <ol class="breadcrumb">
     <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
-      <a    *ngIf="!route.terminal" class="breadcrumb-item" href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
-      <span *ngIf="route.terminal"  class="breadcrumb-item active">{{ route.displayName }}</span>
+      <li *ngIf="!route.terminal" class="breadcrumb-item">
+        <a href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+      </li>
+      <li *ngIf="route.terminal" class="breadcrumb-item active" aria-current="page">{{ route.displayName }}</li>
     </ng-template>
-  </nav>
-</breadcrumb>
+  </ol>
+</breadcrumb>  
 ```
 
-#### Materialize Breadcrumb
+#### @angular/material breadcrumb
 
 ```html
 <breadcrumb #parent>
-  <nav>
-    <div class="nav-wrapper">
-      <div class="col s12">
-        <template ngFor let-route [ngForOf]="parent.breadcrumbs">
-          <a    *ngIf="!route.terminal" class="breadcrumb" href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
-          <span *ngIf="route.terminal"  class="breadcrumb">{{ route.displayName }}</span>
-        </template>
-      </div>
-    </div>
-  </nav>
+    <span class="breadcrumb" *ngFor="let route of parent.breadcrumbs">
+        <a mat-button *ngIf="!route.terminal" href="" [routerLink]="[route.url]">{{ route.displayName }}</a>
+        <a mat-button *ngIf="route.terminal">{{ route.displayName }}</a>
+    </span>
 </breadcrumb>
+```
+
+#### primeng breadcrumb
+
+```html
+<p-breadcrumb [model]="breadcrumbs"></p-breadcrumb>
+```
+```typescript
+export class AppComponent {
+    breadcrumbs: MenuItem[];
+
+    constructor(private breadcrumbService: BreadcrumbService) { }
+
+    ngOnInit() {
+        this.breadcrumbService.breadcrumbChanged.subscribe(crumbs => {
+            this.breadcrumbs = crumbs.map(c => this.toPrimeNgMenuItem(c));
+        });
+    }
+
+    private toPrimeNgMenuItem(crumb: Breadcrumb) {
+        return <MenuItem>{ label: crumb.displayName, url: `#${crumb.url}`}
+    }
+}
 ```
 
 ### Dynamic breadcrumbs 
 
-Use `BreadcrumbService` to set the breadcrumb description dynamically. [See full demo example](https://github.com/emilol/angular-crumbs/blob/master/demo/src/app/github/repo-detail/repo-detail.component.ts)
+Use `BreadcrumbService` to set the breadcrumb description dynamically. [See full demo example](https://github.com/emilol/angular-crumbs/blob/master/demos/demo-angular-six/src/app/shared/github/repo-detail/repo-detail.component.ts)
 
 ```typescript
 ngOnInit() {
@@ -107,7 +124,7 @@ ngOnInit() {
 
 ### Dynamic page titles
 
-Use `BreadcrumbService` to subscribe to breadcrumb changes. [See full demo example](https://github.com/emilol/angular-crumbs/blob/master/demo/src/app/app.component.ts)
+Use `BreadcrumbService` to subscribe to breadcrumb changes. [See full demo example](https://github.com/emilol/angular-crumbs/blob/master/demos/demo-angular-six/projects/bootstrap-demo/src/app/app.component.ts)
 
 ```typescript
 ngOnInit() {

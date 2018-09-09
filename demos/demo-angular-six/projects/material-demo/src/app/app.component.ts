@@ -1,6 +1,5 @@
-import { Component, ViewEncapsulation, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import {MediaMatcher} from '@angular/cdk/layout';
 
 import { Breadcrumb, BreadcrumbService } from 'angular-crumbs';
 import { GithubService } from 'src/app/shared/github.service';
