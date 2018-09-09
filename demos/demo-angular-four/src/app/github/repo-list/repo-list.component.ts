@@ -12,7 +12,9 @@ export class RepoListComponent implements OnInit {
   org: string;
   repos: Observable<any>;
 
-  constructor(public github: GithubService, private route: ActivatedRoute) {
+  constructor(
+    public github: GithubService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
