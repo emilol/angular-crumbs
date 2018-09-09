@@ -5,13 +5,17 @@ import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 import {BreadcrumbModule} from 'angular-crumbs';
+
 import {AboutComponent} from './about/about.component';
 import {HomeComponent} from './home/home.component';
 import {RepoBrowserComponent} from './github/repo-browser/repo-browser.component';
 import {RepoListComponent} from './github/repo-list/repo-list.component';
 import {RepoDetailComponent} from './github/repo-detail/repo-detail.component';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { GitHubComponent } from './github/github.component';
+import { OrganisationComponent } from './github/organisation/organisation.component';
 
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 
@@ -23,6 +27,8 @@ const APP_PROVIDERS = [
   declarations: [
     AppComponent,
     AboutComponent,
+    GitHubComponent,
+    OrganisationComponent,
     RepoBrowserComponent,
     RepoListComponent,
     RepoDetailComponent,

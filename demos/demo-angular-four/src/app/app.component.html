@@ -1,17 +1,18 @@
-<h3>Angular Breadcrumb</h3>
-
-<nav>
-    <a [routerLink]="['/']">Home</a> |
-    <a [routerLink]="['/about']">About</a> |
-    <a [routerLink]="['/github', 'angular']">Github Repos</a>
-</nav>
-
-<br />
-
-<breadcrumb></breadcrumb>
-
-<main>
-    <router-outlet></router-outlet>
-</main>
-
-<footer>© 2017</footer>
+<div class="wrapper">
+    <div class="sidenav">
+        <nav>
+            <a [routerLink]="['/']">Home</a>
+            <a [routerLink]="['/about']">About</a>
+            <a [routerLink]="['/github']">Github</a>
+            <a [routerLink]="['/github', 'angular']">> Angular</a>
+            <a [routerLink]="['/github', 'twbs']">> Bootstrap</a>
+            <a [routerLink]="['/github', 'primefaces']">> PrimeFaces</a>
+            <a [routerLink]="['/']">Other demos</a>
+        </nav>
+    </div>
+    <main>
+        <breadcrumb></breadcrumb>
+        <router-outlet></router-outlet>
+    </main>
+</div>
+<footer>© 2018</footer>
