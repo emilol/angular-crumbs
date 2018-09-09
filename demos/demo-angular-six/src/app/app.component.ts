@@ -43,6 +43,6 @@ export class AppComponent {
   }
 
   private mapPrimeNgCrumbs(crumbs: Breadcrumb[]) : MenuItem[] {
-      return crumbs.map(c => <MenuItem>{ label: c.displayName, url: `#/${c.url}`});
+      return crumbs.map(c => <MenuItem>{ label: c.displayName, url: `#${c.url}`});
   }
 }
