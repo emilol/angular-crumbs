@@ -22,6 +22,7 @@ export class AppComponent {
   ngOnInit() {
       this.menuBarItems = [
         { icon: 'fa fa-home', routerLink: ['/home'] },
+        { label: 'Other Demos', routerLink: ['/home'] },
       ];
       this.items = [
         { label: 'Home', routerLink: ['/home'] },
