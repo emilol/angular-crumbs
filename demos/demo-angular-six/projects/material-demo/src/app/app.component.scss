@@ -1,0 +1,19 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~angular-crumbs/style';
+
+.breadcrumb {
+  text-decoration: none;
+}
+.breadcrumb:before {
+  content: '|';
+}
+.example-container {
+  min-height: calc(100vh - 128px);
+}
+
+main {
+  padding: 20px 50px 50px 20px;
+}
+.spacer {
+  flex: 1 1 auto;
+}

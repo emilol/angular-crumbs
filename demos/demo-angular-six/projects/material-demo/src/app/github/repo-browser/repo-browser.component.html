@@ -1,0 +1,6 @@
+<mat-form-field class="example-form-field">
+    <input matInput type="text" placeholder="Search Github Orgs" #repoName>
+    <button mat-button matSuffix mat-icon-button aria-label="Search Github Organisations" (click)="searchForOrganisation(repoName.value)">
+      <mat-icon>search</mat-icon>
+    </button>
+</mat-form-field>
