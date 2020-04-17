@@ -1,0 +1,24 @@
+{
+  "name": "angular-crumbs",
+  "version": "9.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilol/angular-crumbs.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "breadcrumb"
+  ],
+  "author": "Emily Taylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emilol/angular-crumbs/issues"
+  },
+  "homepage": "https://github.com/emilol/angular-crumbs#readme",
+  "peerDependencies": {
+    "@angular/common": "^9.1.1",
+    "@angular/core": "^9.1.1",
+    "tslib": "^1.10.0"
+  }
+}

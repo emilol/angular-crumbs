@@ -14,13 +14,7 @@
     "lib": [
       "es2018",
       "dom"
-    ],
-    "paths": {
-      "angular-crumbs": [
-        "dist/angular-crumbs/angular-crumbs",
-        "dist/angular-crumbs"
-      ]
-    }
+    ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
